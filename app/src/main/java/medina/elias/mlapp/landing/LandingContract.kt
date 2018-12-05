@@ -5,8 +5,8 @@ import medina.elias.mlapp.utils.BaseContract
 interface LandingContract : BaseContract{
 
     interface View : BaseContract.View {
-        fun updateSliderView (path: String)
-        fun updateItemsView ()
+        fun displaySliderView (path: String)
+        fun displayItems ()
     }
 
     interface Presenter : BaseContract.Presenter {
@@ -14,5 +14,6 @@ interface LandingContract : BaseContract{
         fun getItems ()
         fun updateItemView ()
         fun updateSliderView ()
+        fun navToSearch ()
     }
 }
