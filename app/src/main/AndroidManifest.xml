@@ -15,14 +15,16 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity"/>
 
-        <activity android:name=".search.SearchLandingActivity"/>
+        <activity android:name=".search.SearchLandingActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+         </activity>
 
         <activity android:name=".landing.LandingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.mercadolibre.android.sdk.MercadoLibreActivity"

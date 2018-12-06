@@ -1,5 +1,7 @@
 package medina.elias.mlapp.api
 
+import io.reactivex.Observable
+import medina.elias.mlapp.models.Model
 import medina.elias.mlapp.models.Product
 import medina.elias.mlapp.models.ProductDescription
 import medina.elias.mlapp.models.SearchResult
@@ -15,15 +17,15 @@ interface RetroFitHelper {
 
     // Get search results based on a query
     @GET("sites/MLA/search")
-    abstract fun getSearchResult(@Query("q") query: String): Call<SearchResult>
+     fun getSearchResult(@Query("q") query: String): Observable<SearchResult>
 
     // Get extra info item
     @GET("items/{id}")
-    abstract fun getProductDetails(@Path("id") id: String): Call<Product>
+     fun getProductDetails(@Path("id") id: String): Call<Product>
 
     // Product description
     @GET("items/{id}/description")
-    abstract fun getProductDescription(@Path("id") id: String): Call<ProductDescription>
+     fun getProductDescription(@Path("id") id: String): Observable<ProductDescription>
 
 
     companion object Factory {

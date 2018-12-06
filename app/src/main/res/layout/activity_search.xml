@@ -11,6 +11,18 @@
         layout="@layout/toolbar">
     </include>
 
+    <TextView
+        android:id="@+id/editTextTest"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="238dp"
+        android:layout_marginBottom="254dp"
+        android:text="HOLA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="368dp"
         android:layout_height="495dp"
@@ -21,7 +33,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:visibility="gone"/>
 
 
 </android.support.constraint.ConstraintLayout>
