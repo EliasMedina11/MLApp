@@ -1,5 +1,6 @@
 package medina.elias.mlapp.adapters
 
+import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -19,13 +20,17 @@ class ItemDetailsAdapter (val items: ArrayList<Product>) :RecyclerView.Adapter<I
 
     class ViewHolderProduct (view: View) : RecyclerView.ViewHolder(view){
 
+        @SuppressLint("SetTextI18n")
         fun bind (item: Product) = with(itemView){
          val slide:  MutableList<Slide> = mutableListOf()
             for (i in item.pictures.indices){
                 slide.add(Slide(i,item.pictures[i].url,R.dimen.slider_image_corner)) }
             imageViewProduct.addSlides(slide)
             textViewTitle.text = item.title
-            textViewDetails.text = item.condition
+            textViewSeller.text = item.sellerId.toString()
+            textViewPrice.text = item.price.toString()
+            textViewUnidades.text = "Quedan: ${item.availableQuantity} unidades"
+            textViewSold.text = "Vendidos: ${item.soldQuantity}"
         }
 
     }

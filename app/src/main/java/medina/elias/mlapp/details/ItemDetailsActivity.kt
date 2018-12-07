@@ -28,6 +28,9 @@ class ItemDetailsActivity : ToolbarActivity(), ItemDetailsContract.View{
         searchDetails("MLA722803144")
     }
 
+    override fun setSupportActionBar(toolbar: Toolbar?) {
+    }
+
     override fun updateRecyclerView(adapter: ItemDetailsAdapter) {
         recycler.setHasFixedSize(true)
         recycler.itemAnimator = DefaultItemAnimator()
