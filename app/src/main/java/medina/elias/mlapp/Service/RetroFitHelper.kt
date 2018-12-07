@@ -1,4 +1,4 @@
-package medina.elias.mlapp.api
+package medina.elias.mlapp.Service
 
 import io.reactivex.Observable
 import medina.elias.mlapp.models.Product
@@ -20,7 +20,7 @@ interface RetroFitHelper {
 
     // Get extra info item
     @GET("items/{id}")
-     fun getProductDetails(@Path("id") id: String): Call<Product>
+     fun getProductDetails(@Path("id") id: String): Observable<Product>
 
     // Product description
     @GET("items/{id}/description")

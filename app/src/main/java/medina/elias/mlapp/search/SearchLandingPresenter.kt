@@ -3,38 +3,40 @@ package medina.elias.mlapp.search
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import medina.elias.mlapp.api.RetroFitHelper
+import medina.elias.mlapp.Service.RetroFitHelper
+import medina.elias.mlapp.adapters.ItemListAdapter
 import medina.elias.mlapp.models.Result
 
 class SearchLandingPresenter : SearchLandingContract.Presenter {
 
     val retroFitHelper by lazy { RetroFitHelper.create() }
     var disposable : Disposable? = null
-   lateinit var resultList : List<Result>
+    var adapter: ItemListAdapter? = null
+
+    private val subscribeScheduler = Schedulers.io()
+    private val observerScheduler = AndroidSchedulers.mainThread()
 
     override fun updateItemView() {
     }
 
     override fun dispose() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 
-  override  fun doSearch (query : String): List<Result> {
+  override  fun doSearch (query : String) {
         disposable =
                 retroFitHelper.getSearchResult(query)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(subscribeScheduler)
+                        .observeOn(observerScheduler)
                         .subscribe(
-                                { result -> resultList = result.results },
+                                { result -> navToSearch(result.results)},
                                 { error -> print(error.message)}
                         )
-
-      return resultList
     }
 
     override fun navToSearch(searchList: List<Result>) {
-        this.resultList = searchList
 
     }
+
+
 }
