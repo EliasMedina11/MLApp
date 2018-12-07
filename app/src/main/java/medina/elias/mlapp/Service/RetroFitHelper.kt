@@ -1,7 +1,6 @@
 package medina.elias.mlapp.api
 
 import io.reactivex.Observable
-import medina.elias.mlapp.models.Model
 import medina.elias.mlapp.models.Product
 import medina.elias.mlapp.models.ProductDescription
 import medina.elias.mlapp.models.SearchResult
