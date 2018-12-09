@@ -2,6 +2,7 @@ package medina.elias.mlapp.details
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import medina.elias.mlapp.R
 
 class ItemDetailsActivity : AppCompatActivity() {
 

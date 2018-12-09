@@ -1,4 +1,4 @@
-package medina.elias.mlapp.api
+package medina.elias.mlapp.Service
 
 import io.reactivex.Observable
 import medina.elias.mlapp.models.Product
@@ -16,7 +16,7 @@ interface RetroFitHelper {
 
     // Get search results based on a query
     @GET("sites/MLA/search")
-     fun getSearchResult(@Query("q") query: String): Observable<SearchResult>
+     fun getSearchResult(@Query("q") query: String): Call<SearchResult>
 
     // Get extra info item
     @GET("items/{id}")

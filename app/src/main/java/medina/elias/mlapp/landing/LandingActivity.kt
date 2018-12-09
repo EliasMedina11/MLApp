@@ -5,23 +5,29 @@ import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
-import com.eliasmedina.mylibrary.ToolbarActivity
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_landing.*
 import medina.elias.mlapp.R
+import medina.elias.mlapp.search.SearchLandingActivity
+import medina.elias.mlapp.search.SearchLandingFragment
+import medina.elias.mlapp.utils.goToActivity
+import medina.elias.mlapp.utils.goToActivityResult
 import medina.elias.mlapp.utils.toast
 
-class LandingActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedListener {
+class LandingActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
-        toolbarToLoad(toolbar as Toolbar)
 
         setNavDrawer()
         setUserHeaderInformation()
+        performSearch()
 
         if (savedInstanceState == null) {
             fragmentTransaction(LandingFragment())
@@ -30,9 +36,33 @@ class LandingActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelect
 
     }
 
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_search_button -> {
+                onSearchRequested()
+                return true
+            }
+    }
+        return super.onOptionsItemSelected(item)
+
+    }
+
+    override fun onSearchRequested(): Boolean {
+        return super.onSearchRequested()
+    }
+
+    private fun performSearch() {
+    }
+
     private fun setNavDrawer() {
-        val toogle = ActionBarDrawerToggle(this, drawerLayout, _toolbar, R.string.open_drawer, R.string.close_drawer)
-        toogle.isDrawerIndicatorEnabled = true;
+        val toogle = ActionBarDrawerToggle(this, drawerLayout, toolbar,  R.string.open_drawer, R.string.close_drawer)
+        toogle.isDrawerIndicatorEnabled = true
         drawerLayout.addDrawerListener(toogle)
         toogle.syncState()
 
@@ -47,16 +77,13 @@ class LandingActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelect
 
     private fun loadFragmentById(id: Int) {
         when (id) {
-
             R.id.nav_home -> fragmentTransaction(LandingFragment())
-
-
         }
     }
 
     private fun showMessageNavItemSelectedById(id: Int) {
         when (id) {
-            R.id.nav_profile -> toast("Hello from Profile")
+            R.id.nav_profile -> onSearchRequested()
             R.id.nav_settings -> toast("Hello from Settings")
         }
     }

@@ -1,40 +1,57 @@
 package medina.elias.mlapp.search
 
+
+import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import medina.elias.mlapp.api.RetroFitHelper
+import medina.elias.mlapp.Service.ConnexionHandler
+import medina.elias.mlapp.adapters.ItemListAdapter
+import medina.elias.mlapp.Service.RetroFitHelper
 import medina.elias.mlapp.models.Result
+import medina.elias.mlapp.utils.SearchListener
 
-class SearchLandingPresenter : SearchLandingContract.Presenter {
+
+class SearchLandingPresenter(private var view : SearchLandingContract.View) : SearchLandingContract.Presenter {
+
 
     val retroFitHelper by lazy { RetroFitHelper.create() }
     var disposable : Disposable? = null
-   lateinit var resultList : List<Result>
+    var resultList : MutableList<Result> = mutableListOf()
+    private lateinit var adapter : ItemListAdapter
 
-    override fun updateItemView() {
-    }
 
     override fun dispose() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-
-  override  fun doSearch (query : String): List<Result> {
+  override fun doSearch (query : String): String{
+    /*  Log.e("Comienza busqueda con",query)
         disposable =
                 retroFitHelper.getSearchResult(query)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                { result -> resultList = result.results },
-                                { error -> print(error.message)}
-                        )
+                                { result -> resultList.addAll(result.results) },
+                                { error -> Log.e("fallo la busqueda",error.message)})
+        Log.e("resultado",resultList.toString())
+        */
+      return ""
 
-      return resultList
+  }
+
+    override fun updateItemRecyclerView(query: String) {
+        resultList = ConnexionHandler.search(query)
+        adapter = ItemListAdapter(resultList,object: SearchListener {
+            override fun onClick(itemId: String, position: Int) {
+               Log.e("Evento", "Tocaste $itemId")
+            }
+        })
+        view.displayItems(adapter)
+
     }
 
-    override fun navToSearch(searchList: List<Result>) {
+    override fun navToSearch(searchList: MutableList<Result>) {
         this.resultList = searchList
-
     }
+
 }
