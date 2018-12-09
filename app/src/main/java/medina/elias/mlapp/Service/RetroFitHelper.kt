@@ -20,7 +20,7 @@ interface RetroFitHelper {
 
     // Get extra info item
     @GET("items/{id}")
-     fun getProductDetails(@Path("id") id: String): Call<Product>
+     fun getProductDetails(@Path("id") id: String): Observable<Product>
 
     // Product description
     @GET("items/{id}/description")

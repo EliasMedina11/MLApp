@@ -12,7 +12,7 @@ import medina.elias.mlapp.utils.SearchListener
 import medina.elias.mlapp.utils.inflate
 import medina.elias.mlapp.utils.loadByUrl
 
-class ItemListAdapter(private val results: List<Result>, private val listener: SearchListener?) : RecyclerView.Adapter<ViewHolder>(){
+class ItemListAdapter(private val results: ArrayList<Result>, private val listener: SearchListener?) : RecyclerView.Adapter<ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(parent.inflate(R.layout.item_view))
 

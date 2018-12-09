@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import medina.elias.mlapp.adapters.ItemListAdapter
 
 
+
 class SearchLandingActivity : AppCompatActivity(), SearchLandingContract.View {
 
     private val presenter by lazy { SearchLandingPresenter(this) }

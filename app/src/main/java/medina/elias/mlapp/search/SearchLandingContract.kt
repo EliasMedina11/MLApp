@@ -7,13 +7,15 @@ import medina.elias.mlapp.utils.BaseContract
 interface SearchLandingContract : BaseContract {
 
     interface View : BaseContract.View {
-        fun getQuery (query: String)
-        fun displayItems (adapter: ItemListAdapter)
+        fun getQuery(query: String)
+        fun displayItems(adapter: ItemListAdapter)
     }
 
     interface Presenter : BaseContract.Presenter {
-        fun doSearch (query: String) : String
-        fun updateItemRecyclerView (query: String)
-        fun navToSearch (searchList : MutableList<Result>)
+        fun doSearch (query: String)
+        fun updateItemRecyclerView(query: String)
+        fun navToSearch(searchList: ArrayList<Result>)
+        fun displayItemsSearch(adapter: ItemListAdapter)
     }
+
 }

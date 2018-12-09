@@ -1,20 +1,15 @@
 package medina.elias.mlapp.Service;
 
-import android.util.Log;
-
 import java.util.List;
+
 import medina.elias.mlapp.models.Result;
-import medina.elias.mlapp.models.SearchResult;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class ConnexionHandler {
 
     private static List<Result>  resultList;
 
-    public static List<Result> search (String query)  {
+  /*  public static List<Result> search (String query)  {
         RetroFitHelper service = ApiService.getRetrofitInstance().create(RetroFitHelper.class);
         Call<SearchResult> call = service.getSearchResult(query);
         call.enqueue(new Callback<SearchResult>() {
@@ -39,5 +34,5 @@ public class ConnexionHandler {
         return resultList;
 }
 
-
+*/
 }
