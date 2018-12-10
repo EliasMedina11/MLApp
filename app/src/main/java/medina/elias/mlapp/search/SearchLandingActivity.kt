@@ -1,73 +1,86 @@
 package medina.elias.mlapp.search
 
-import android.app.SearchManager
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.*
 import kotlinx.android.synthetic.main.activity_search.*
-import android.support.v7.widget.LinearLayoutManager
-import android.widget.LinearLayout
+import android.view.Menu
+import android.view.View
+import com.eliasmedina.mylibrary.ToolbarActivity
+import medina.elias.mlapp.R
 import medina.elias.mlapp.adapters.ItemListAdapter
+import medina.elias.mlapp.landing.LandingActivity
+import medina.elias.mlapp.utils.goToActivity
 
 
-
-class SearchLandingActivity : AppCompatActivity(), SearchLandingContract.View {
+class SearchLandingActivity : ToolbarActivity(), SearchLandingContract.View {
 
     private val presenter by lazy { SearchLandingPresenter(this) }
     private val layoutManager by lazy { LinearLayoutManager(this) }
+    private lateinit var recycler: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        handleIntent(intent)
+        setContentView(R.layout.activity_search)
+        toolbarToLoad(toolbar as Toolbar)
 
+        val query =  intent.getStringExtra("query")
+        presenter.doSearch(query)
+        setupToolbar()
+
+        recycler = recycler_item_search
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
+        menuInflater.inflate(R.menu.toolbar_actions,menu)
+        val searchItem = menu.findItem(R.id.action_search_button)
+        if (searchItem != null) {
+            val searchView = searchItem.actionView as SearchView
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    presenter.doSearch(query)
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText!!.isNotEmpty()){
+
+                    }
+                    return true
+                }
+
+            })
+        }
+        return true
     }
 
-    override fun getQuery(query: String) {
+    private fun setupToolbar() {
+        _toolbar?.setNavigationOnClickListener {
+            goToActivity<LandingActivity> {  }
+        }
     }
 
     override fun displayItems(adapter: ItemListAdapter) {
-        recycler_item_search.layoutManager = LinearLayoutManager(this,LinearLayout.VERTICAL,false)
-        recycler_item_search.setHasFixedSize(true)
-        recycler_item_search.itemAnimator = DefaultItemAnimator()
-        recycler_item_search.layoutManager = layoutManager
+        recycler.setHasFixedSize(true)
+        recycler.itemAnimator = DefaultItemAnimator()
+        recycler.layoutManager = layoutManager
 
-        recycler_item_search.adapter = adapter
+        recycler.adapter = adapter
 
     }
 
     override fun showLoading(showLoading: Boolean) {
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        handleIntent(intent)
-    }
-    private fun handleIntent(intent: Intent) {
-        if(Intent.ACTION_SEARCH == intent.action){
-            intent.getStringExtra(SearchManager.QUERY)?.also { query ->
-               presenter.updateItemRecyclerView(query)
-            }
+        if (!showLoading){
+            progressBar.visibility = View.GONE
         }
     }
 
-  /*  fun doSearch (query : String): List<Result> {
-        var resultList = listOf<Result>()
-        Log.e("Comienza busqueda con",query)
-        disposable =
-                retroFitHelper.getSearchResult(query)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(
-                                { result -> resultList = result.results },
-                                { error -> Log.e("fallo la busqueda",error.message)})
-        Log.e("resultado",resultList.toString())
-        return resultList
+    override fun getContext() = this
+
+    override fun showNoResultsMessage() {
+        textViewNoResults.visibility = View.VISIBLE
     }
-    */
 
 }

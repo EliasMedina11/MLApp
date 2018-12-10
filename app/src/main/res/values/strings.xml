@@ -7,4 +7,8 @@
     <string name="open_drawer">Navigation Drawer is open</string>
     <string name="close_drawer">Navigation Drawer is closed</string>
 
+    <string name="user">User</string>
+    <string name="email">Email</string>
+    <string name="product">Producto</string>
+
 </resources>

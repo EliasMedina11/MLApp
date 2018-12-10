@@ -1,19 +1,20 @@
 package medina.elias.mlapp.landing
 
+import android.content.Context
+import medina.elias.mlapp.adapters.RecentItemsAdapter
+import medina.elias.mlapp.models.Result
 import medina.elias.mlapp.utils.BaseContract
 
 interface LandingContract : BaseContract{
 
     interface View : BaseContract.View {
-        fun displaySliderView (path: String)
-        fun displayItems ()
+        fun updateRecyclerView(adapter: RecentItemsAdapter)
+        fun getContext () : Context
+        fun showNoResultsMessage ()
     }
 
     interface Presenter : BaseContract.Presenter {
-        fun getSliders ()
-        fun getItems ()
-        fun updateItemView ()
-        fun updateSliderView ()
-        fun navToSearch ()
+        fun attachToAdapter(product: List<Result>)
+        fun fetchResult(search: String)
     }
 }

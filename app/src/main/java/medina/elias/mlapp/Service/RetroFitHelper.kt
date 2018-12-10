@@ -16,7 +16,7 @@ interface RetroFitHelper {
 
     // Get search results based on a query
     @GET("sites/MLA/search")
-     fun getSearchResult(@Query("q") query: String): Call<SearchResult>
+     fun getSearchResult(@Query("q") query: String): Observable<SearchResult>
 
     // Get extra info item
     @GET("items/{id}")

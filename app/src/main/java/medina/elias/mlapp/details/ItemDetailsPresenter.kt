@@ -6,7 +6,6 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import medina.elias.mlapp.Service.RetroFitHelper
 import medina.elias.mlapp.adapters.ItemDetailsAdapter
-import medina.elias.mlapp.adapters.ItemListAdapter
 import medina.elias.mlapp.models.Product
 
 class ItemDetailsPresenter(private val view : ItemDetailsContract.View) : ItemDetailsContract.Presenter {

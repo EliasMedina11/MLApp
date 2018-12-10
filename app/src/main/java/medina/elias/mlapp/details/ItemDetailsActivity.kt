@@ -1,17 +1,19 @@
 package medina.elias.mlapp.details
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 
 import medina.elias.mlapp.R
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
+import com.eliasmedina.mylibrary.ToolbarActivity
 import kotlinx.android.synthetic.main.activity_item_details.*
 import medina.elias.mlapp.adapters.ItemDetailsAdapter
+import medina.elias.mlapp.landing.LandingActivity
+import medina.elias.mlapp.utils.goToActivity
 
-class ItemDetailsActivity : AppCompatActivity(), ItemDetailsContract.View{
+class ItemDetailsActivity : ToolbarActivity(), ItemDetailsContract.View{
 
     private val presenter: ItemDetailsPresenter by lazy { ItemDetailsPresenter(this) }
 
@@ -22,9 +24,13 @@ class ItemDetailsActivity : AppCompatActivity(), ItemDetailsContract.View{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_details)
 
-        recycler = recycler_view_details
+        toolbarToLoad(toolbar as Toolbar)
 
-        searchDetails("MLA722803144")
+        recycler = recycler_view_details
+        val productId : String = intent.getStringExtra("itemId")
+
+        setupToolbar()
+        searchDetails(productId)
     }
 
     override fun setSupportActionBar(toolbar: Toolbar?) {
@@ -43,5 +49,12 @@ class ItemDetailsActivity : AppCompatActivity(), ItemDetailsContract.View{
 
     private fun searchDetails(productId: String) {
         presenter.searchDetails(productId)
+    }
+
+    private fun setupToolbar() {
+        _toolbar!!.setTitle(R.string.product)
+        _toolbar?.setNavigationOnClickListener {
+            finish()
+        }
     }
 }

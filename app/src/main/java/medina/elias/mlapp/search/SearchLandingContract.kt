@@ -1,5 +1,6 @@
 package medina.elias.mlapp.search
 
+import android.content.Context
 import medina.elias.mlapp.adapters.ItemListAdapter
 import medina.elias.mlapp.models.Result
 import medina.elias.mlapp.utils.BaseContract
@@ -7,15 +8,14 @@ import medina.elias.mlapp.utils.BaseContract
 interface SearchLandingContract : BaseContract {
 
     interface View : BaseContract.View {
-        fun getQuery(query: String)
         fun displayItems(adapter: ItemListAdapter)
+        fun getContext () : Context
+        fun showNoResultsMessage ()
     }
 
     interface Presenter : BaseContract.Presenter {
         fun doSearch (query: String)
-        fun updateItemRecyclerView(query: String)
-        fun navToSearch(searchList: ArrayList<Result>)
-        fun displayItemsSearch(adapter: ItemListAdapter)
+        fun updateItemRecyclerView(results:List<Result>)
     }
 
 }
