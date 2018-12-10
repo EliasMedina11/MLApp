@@ -32,7 +32,6 @@
         <activity android:name=".landing.LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -44,10 +43,6 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <activity android:name=".details.ItemDetailsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
     </application>

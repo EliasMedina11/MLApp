@@ -10,7 +10,7 @@ import medina.elias.mlapp.models.Product
 
 class ItemDetailsPresenter(private val view : ItemDetailsContract.View) : ItemDetailsContract.Presenter {
 
-   private val retroFitHelper by lazy { RetroFitHelper.create() }
+    private val retroFitHelper by lazy { RetroFitHelper.create() }
    private var disposable : Disposable? = null
    private var adapter: ItemDetailsAdapter? = null
 
@@ -31,6 +31,22 @@ class ItemDetailsPresenter(private val view : ItemDetailsContract.View) : ItemDe
         adapter = (ItemDetailsAdapter(product))
         view.updateRecyclerView(adapter!!)
     }
+
+    override fun searchDescription(itemId: String) {
+        disposable =
+                retroFitHelper.getProductDescription(itemId)
+                        .subscribeOn(subscribeScheduler)
+                        .observeOn(observerScheduler)
+                        .subscribe(
+                                {result -> getDescription(result.text)},
+                                {error -> Log.e("Error item Description",error.message)}
+                        )
+    }
+
+    override fun getDescription(itemDescription: String) {
+        view.updateDescriptionText(itemDescription)
+    }
+
 
     override fun dispose() {
 

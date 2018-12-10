@@ -1,5 +1,8 @@
 package medina.elias.mlapp
 
+import medina.elias.mlapp.landing.LandingActivity
+import medina.elias.mlapp.landing.LandingPresenter
+import medina.elias.mlapp.models.Result
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -15,9 +18,10 @@ class ExampleUnitTest {
         assertEquals(4, 2 + 2)
     }
 
-    @Test
+    @Test fun obtainResultsCorrectReturnValue (){
+    }
 
-    fun obtainQuery (){
+    @Test fun queryObtainedFromSearchActivity(){
 
     }
 }

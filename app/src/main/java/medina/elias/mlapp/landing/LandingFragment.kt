@@ -23,7 +23,7 @@ class LandingFragment : Fragment(), LandingContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter.fetchResult("Bateria")
+        presenter.fetchResult("Mac book")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

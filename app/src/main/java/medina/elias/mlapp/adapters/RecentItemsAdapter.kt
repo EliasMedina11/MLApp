@@ -23,7 +23,7 @@ class ViewHolderLanding (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind (result: Result, listener: SearchListener? ) = with(itemView) {
         textViewMainTitle.text = result.title
-        textViewMainPrice.text = (String.format("%s$%s", result.currencyId, result.price.toString()))
+        textViewMainPrice.text = (String.format("%s$%s", result.currency_id, result.price.toString()))
         Picasso.get().load(result.thumbnail).into(itemView.imageViewMainProduct)
         setOnClickListener { listener?.onClick(result.id, adapterPosition) }
     }

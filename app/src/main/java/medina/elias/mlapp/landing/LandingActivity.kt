@@ -38,7 +38,6 @@ class LandingActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelect
             navView.menu.getItem(0).isChecked = true;
         }
 
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

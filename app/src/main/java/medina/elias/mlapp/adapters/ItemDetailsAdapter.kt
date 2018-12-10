@@ -27,10 +27,10 @@ class ItemDetailsAdapter (val items: ArrayList<Product>) :RecyclerView.Adapter<I
                 slide.add(Slide(i,item.pictures[i].url,1)) }
             imageViewProduct.addSlides(slide)
             textViewTitle.text = item.title
-            textViewSeller.text = item.sellerId.toString()
-            textViewPrice.text = (String.format("%s$%s", item.currencyId, item.price.toString()))
-            textViewUnidades.text = "Quedan: ${item.availableQuantity} unidades"
-            textViewSold.text = "Vendidos: ${item.soldQuantity}"
+            textViewSeller.text = item.seller_id.toString()
+            textViewPrice.text = (String.format("%s$%s", item.currency_id, item.price.toString()))
+            textViewUnidades.text = "Quedan: ${item.available_quantity} unidades"
+            textViewSold.text = "Vendidos: ${item.sold_quantity}"
         }
 
     }

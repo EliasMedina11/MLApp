@@ -1,6 +1,7 @@
 package medina.elias.mlapp.landing
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
@@ -13,10 +14,7 @@ import medina.elias.mlapp.details.ItemDetailsActivity
 import medina.elias.mlapp.models.Result
 import medina.elias.mlapp.utils.SearchListener
 
-class LandingPresenter(private var view: LandingContract.View): LandingContract.Presenter {
-
-
-
+class LandingPresenter(private val view: LandingContract.View): LandingContract.Presenter {
 
     val retroFitHelper by lazy { RetroFitHelper.create() }
     var disposable : Disposable? = null
@@ -25,8 +23,6 @@ class LandingPresenter(private var view: LandingContract.View): LandingContract.
 
     private val subscribeScheduler = Schedulers.io()
     private val observerScheduler = AndroidSchedulers.mainThread()
-
-
 
     override fun fetchResult(search: String) {
         Log.e("Comienza busqueda de:",search)
@@ -37,7 +33,7 @@ class LandingPresenter(private var view: LandingContract.View): LandingContract.
                         .subscribeOn(subscribeScheduler)
                         .observeOn(observerScheduler)
                         .subscribe( { result -> attachToAdapter(result.results)},
-                                { error ->  Log.e("Error with product",error.message)}
+                                    { error ->  Log.e("Error with product",error.message)}
                         )
     }
 
@@ -55,10 +51,7 @@ class LandingPresenter(private var view: LandingContract.View): LandingContract.
         } else {
             view.showNoResultsMessage()
         }
-
     }
-
     override fun dispose() {}
-
 }
 

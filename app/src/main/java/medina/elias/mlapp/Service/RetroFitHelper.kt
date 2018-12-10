@@ -3,9 +3,8 @@ package medina.elias.mlapp.Service
 import io.reactivex.Observable
 import medina.elias.mlapp.models.Product
 import medina.elias.mlapp.models.ProductDescription
-import medina.elias.mlapp.models.SearchResult
+import medina.elias.mlapp.models.SearchResults
 import medina.elias.mlapp.utils.AppConstants
-import retrofit2.Call
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -16,7 +15,7 @@ interface RetroFitHelper {
 
     // Get search results based on a query
     @GET("sites/MLA/search")
-     fun getSearchResult(@Query("q") query: String): Observable<SearchResult>
+     fun getSearchResult(@Query("q") query: String): Observable<SearchResults>
 
     // Get extra info item
     @GET("items/{id}")

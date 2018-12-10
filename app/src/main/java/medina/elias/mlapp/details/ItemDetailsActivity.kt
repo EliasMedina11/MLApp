@@ -57,4 +57,9 @@ class ItemDetailsActivity : ToolbarActivity(), ItemDetailsContract.View{
             finish()
         }
     }
+
+    override fun updateDescriptionText(textDescription: String) {
+
+    }
+
 }
