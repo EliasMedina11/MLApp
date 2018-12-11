@@ -33,44 +33,50 @@ class LandingActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelect
         setNavDrawer()
         setUserHeaderInformation()
 
+        /*En el caso de tener mas tabs por las cuales navegar a travez de fragments se asegura
+         que el item indicado en el navDrawer este seleccionado*/
         if (savedInstanceState == null) {
             fragmentTransaction(LandingFragment())
             navView.menu.getItem(0).isChecked = true
         }
     }
+    //Metodo para sobrescribir el comportamiento del toolbar
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-
+        //Se obtiene el menu y toolbar a inflar
         menuInflater.inflate(R.menu.toolbar_actions,menu)
         val searchItem = menu.findItem(R.id.action_search_button)
+        //Se obtiene el ArrayList con las sugerencias
         val adapter = ArrayAdapter<String>(this, R.layout.sugestion_edit_text, AppConstants.mainSlides)
         suggestion_list.adapter = adapter
 
         if (searchItem != null) {
             val searchView = searchItem.actionView as SearchView
+            // Al cerrar la vista de busqueda esconder las sugerencias y mostrar landing
             searchView.setOnCloseListener {
                 suggestion_list.visibility = View.GONE
                 container.visibility = View.VISIBLE
                 true
             }
+            // Al seleccionar la vista de busqueda esconder la vista y mostrar lista de sugerencias
             searchView.setOnSearchClickListener {
                 suggestion_list.visibility = View.VISIBLE
                 container.visibility = View.GONE
             }
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                //Al submitear una busqueda viajar a SearchLandingActivity con el valor de la query
                 override fun onQueryTextSubmit(query: String): Boolean {
                     val intent = Intent(applicationContext,SearchLandingActivity::class.java)
                     intent.putExtra("query", query)
                     startActivity(intent)
                     return true
                 }
-
+                //Listener de lo ingresado por el usuario para sugerir busqueda
                 override fun onQueryTextChange(newText: String?): Boolean {
-                    if (newText!!.isNotEmpty()){
                         adapter.filter.filter(newText)
-                    }
-                    return true
+                    return false
                 }
             })
+            //Al seleccionar un item de la lista de sugerencias navegar a SearchLandingActivity con el valor seleccionado
             suggestion_list.setOnItemClickListener { _, _, _, _ ->
                 val selectedString = suggestion_text.text.toString()
                 val intent = Intent(applicationContext,SearchLandingActivity::class.java)
@@ -82,7 +88,7 @@ class LandingActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelect
        return true
     }
 
-
+    //Configuracion del NavDrawer
     private fun setNavDrawer() {
         val toogle = ActionBarDrawerToggle(this, drawerLayout, _toolbar,  R.string.open_drawer, R.string.close_drawer)
         toogle.isDrawerIndicatorEnabled = true
@@ -92,6 +98,7 @@ class LandingActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelect
         navView.setNavigationItemSelectedListener(this)
     }
 
+    //Navegacion y carga de Fragments a travez del drawer
     private fun fragmentTransaction(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
@@ -103,14 +110,14 @@ class LandingActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelect
             R.id.nav_home -> fragmentTransaction(LandingFragment())
         }
     }
-
+    //TODO Reemplazar Toast por navegacion
     private fun showMessageNavItemSelectedById(id: Int) {
         when (id) {
             R.id.nav_profile -> toast("Profile")
             R.id.nav_settings -> toast("Settings")
         }
     }
-
+    // Se setea el valor en el header del navDrawer
     private fun setUserHeaderInformation() {
         val name = navView.getHeaderView(0).findViewById<TextView>(R.id.textViewName)
         val email = navView.getHeaderView(0).findViewById<TextView>(R.id.textViewEmail)

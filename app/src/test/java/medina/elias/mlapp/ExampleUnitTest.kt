@@ -1,11 +1,7 @@
 package medina.elias.mlapp
 
-import medina.elias.mlapp.landing.LandingActivity
-import medina.elias.mlapp.landing.LandingPresenter
-import medina.elias.mlapp.models.Result
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).

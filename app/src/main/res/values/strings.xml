@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">MLApp</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="open_drawer">Navigation Drawer is open</string>
     <string name="close_drawer">Navigation Drawer is closed</string>
 
@@ -14,16 +10,5 @@
     <string name="go_to_details_activity">Go to details activity</string>
     <string name="comprar">Comprar!</string>
     <string name="detalles">Detalles</string>
-
-    <string-array name="Lines">
-        <item>Red Line</item>
-        <item>Blue Line</item>
-        <item>Orange Line</item>
-        <item>Green Line</item>
-        <item>Brown Line</item>
-        <item>Purple Line</item>
-        <item>Pink Line</item>
-        <item>Yellow Line</item>
-    </string-array>
 
 </resources>

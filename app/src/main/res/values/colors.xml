@@ -3,4 +3,8 @@
     <color name="colorPrimary">@color/meli_yellow</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorCustomGrey">#63625C</color>
+    <color name="colorComplement">#423E63</color>
 </resources>

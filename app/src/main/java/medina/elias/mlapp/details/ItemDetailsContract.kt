@@ -1,10 +1,10 @@
 package medina.elias.mlapp.details
 
-import android.widget.TextView
 import medina.elias.mlapp.adapters.ItemDetailsAdapter
-import medina.elias.mlapp.models.Description
 import medina.elias.mlapp.models.Product
 import medina.elias.mlapp.utils.BaseContract
+
+/** Contract de nuestro MVP**/
 
 interface ItemDetailsContract : BaseContract {
 

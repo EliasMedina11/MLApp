@@ -9,6 +9,9 @@ import medina.elias.mlapp.R
 import medina.elias.mlapp.models.Result
 import medina.elias.mlapp.utils.SearchListener
 import medina.elias.mlapp.utils.inflate
+import medina.elias.mlapp.utils.loadByUrl
+
+/** Adapter para los resultados de busqueda**/
 
 class ItemListAdapter(private val results: MutableList<Result>, private val listener: SearchListener?) : RecyclerView.Adapter<ViewHolder>(){
 
@@ -24,7 +27,7 @@ class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 fun bind (result: Result, listener: SearchListener? ) = with(itemView) {
     textViewProductTitle.text = result.title
     textViewPrice.text = (String.format("%s$%s", result.currency_id, result.price.toString()))
-    Picasso.get().load(result.thumbnail).into(itemView.imageViewProduct)
+    itemView.imageViewProduct.loadByUrl(result.thumbnail)
     setOnClickListener { listener?.onClick(result.id, adapterPosition) }
 }
 

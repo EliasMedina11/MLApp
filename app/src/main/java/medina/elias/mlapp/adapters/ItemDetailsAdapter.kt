@@ -7,14 +7,14 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import ir.apend.slider.model.Slide
 import kotlinx.android.synthetic.main.product_details.view.*
 import medina.elias.mlapp.R
 import medina.elias.mlapp.details.DetailsActivity
-import medina.elias.mlapp.details.ItemDetailsActivity
 import medina.elias.mlapp.models.Product
 import medina.elias.mlapp.utils.inflate
+
+/** Adapter para Producto**/
 
 class ItemDetailsAdapter(val items: ArrayList<Product>) : RecyclerView.Adapter<ItemDetailsAdapter.ViewHolderProduct>() {
 
@@ -37,7 +37,6 @@ class ItemDetailsAdapter(val items: ArrayList<Product>) : RecyclerView.Adapter<I
             textViewPrice.text = (String.format("%s$%s", item.currency_id, item.price.toString()))
             textViewUnidades.text = "Quedan: ${item.available_quantity} unidades"
             textViewSold.text = "Vendidos: ${item.sold_quantity}"
-            textViewState.text = "Estado: ${item.condition.toUpperCase()}"
             if (item.accepts_mercadopago) {
                 textViewAcceptsMercadoPago.setTextColor(Color.GREEN)
             } else {

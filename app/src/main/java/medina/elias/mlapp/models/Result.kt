@@ -15,7 +15,7 @@ data class Result(
         var stop_time: String? = null,
         var condition: String? = null,
         var permalink: String? = null,
-        var thumbnail: String? = null,
+        var thumbnail: String,
         var accepts_mercadopago: Boolean? = null,
         var installments: Installments? = null,
         var address: Address? = null,

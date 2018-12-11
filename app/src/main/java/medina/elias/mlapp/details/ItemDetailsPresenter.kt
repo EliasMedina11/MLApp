@@ -8,11 +8,11 @@ import medina.elias.mlapp.Service.RetroFitHelper
 import medina.elias.mlapp.adapters.ItemDetailsAdapter
 import medina.elias.mlapp.models.Product
 
-class ItemDetailsPresenter(private val view : ItemDetailsContract.View) : ItemDetailsContract.Presenter {
+class ItemDetailsPresenter(private val view: ItemDetailsContract.View) : ItemDetailsContract.Presenter {
 
     private val retroFitHelper by lazy { RetroFitHelper.create() }
-   private var disposable : Disposable? = null
-   private var adapter: ItemDetailsAdapter? = null
+    private var disposable: Disposable? = null
+    private var adapter: ItemDetailsAdapter? = null
 
     private val subscribeScheduler = Schedulers.io()
     private val observerScheduler = AndroidSchedulers.mainThread()
@@ -23,8 +23,8 @@ class ItemDetailsPresenter(private val view : ItemDetailsContract.View) : ItemDe
                 retroFitHelper.getProductDetails(itemId)
                         .subscribeOn(subscribeScheduler)
                         .observeOn(observerScheduler)
-                        .subscribe( { result -> attachToAdapter(arrayListOf(result))},
-                                    { error ->  Log.e("Error with product",error.message)}
+                        .subscribe({ result -> attachToAdapter(arrayListOf(result)) },
+                                { error -> Log.e("Error with product", error.message) }
                         )
     }
 
@@ -41,19 +41,14 @@ class ItemDetailsPresenter(private val view : ItemDetailsContract.View) : ItemDe
                         .subscribeOn(subscribeScheduler)
                         .observeOn(observerScheduler)
                         .subscribe(
-                                {result -> getDescription(result.plain_text)},
-                                {error -> Log.e("Error item Description",error.message)}
+                                { result -> getDescription(result.plain_text) },
+                                { error -> Log.e("Error item Description", error.message) }
                         )
     }
 
     override fun getDescription(itemDescription: String) {
         view.showLoading(false)
         view.updateDescriptionText(itemDescription)
-    }
-
-
-    override fun dispose() {
-
     }
 
 }

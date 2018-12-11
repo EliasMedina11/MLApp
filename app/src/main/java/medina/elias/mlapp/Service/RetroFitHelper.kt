@@ -11,6 +11,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/** Interfaz que utiliza Retrofit para hacer llamados hacia la API y obtiene Observables**/
+
 interface RetroFitHelper {
 
     // Get search results based on a query
@@ -24,7 +26,6 @@ interface RetroFitHelper {
     // Product description
     @GET("items/{id}/description")
      fun getProductDescription(@Path("id") id: String): Observable<ProductDescription>
-
 
     companion object Factory {
         fun create(): RetroFitHelper {

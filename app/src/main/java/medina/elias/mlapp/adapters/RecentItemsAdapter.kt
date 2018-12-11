@@ -9,6 +9,9 @@ import medina.elias.mlapp.R
 import medina.elias.mlapp.models.Result
 import medina.elias.mlapp.utils.SearchListener
 import medina.elias.mlapp.utils.inflate
+import medina.elias.mlapp.utils.loadByUrl
+
+/** Adapter para resultados de busqueda, la intencion es crear un recycler view con items recientes o destacados**/
 
 class RecentItemsAdapter(private val results: MutableList<Result>,private val listener: SearchListener?) : RecyclerView.Adapter<ViewHolderLanding>(){
 
@@ -24,7 +27,7 @@ class ViewHolderLanding (itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind (result: Result, listener: SearchListener? ) = with(itemView) {
         textViewMainTitle.text = result.title
         textViewMainPrice.text = (String.format("%s$%s", result.currency_id, result.price.toString()))
-        Picasso.get().load(result.thumbnail).into(itemView.imageViewMainProduct)
+        itemView.imageViewMainProduct.loadByUrl(result.thumbnail)
         setOnClickListener { listener?.onClick(result.id, adapterPosition) }
     }
 

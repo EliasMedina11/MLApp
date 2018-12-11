@@ -25,15 +25,15 @@ class SearchLandingActivity : ToolbarActivity(), SearchLandingContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         toolbarToLoad(toolbar as Toolbar)
-
+        //Obtenemos lo ingresado por el usuario y lo guardamos en una variable
         query = intent.getStringExtra("query")
-
+        //Se llama el metodo doSearch del Presenter y se le da como parametro la query obtenida
         presenter.doSearch(query)
         setupToolbar()
 
         recycler = recycler_item_search
     }
-
+        //Se vuelve a suscribir el comportamiento en el caso de que el usuario haga una busqueda
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
         menuInflater.inflate(R.menu.toolbar_actions,menu)
@@ -45,14 +45,9 @@ class SearchLandingActivity : ToolbarActivity(), SearchLandingContract.View {
                     presenter.doSearch(query)
                     return true
                 }
-
                 override fun onQueryTextChange(newText: String?): Boolean {
-                    if (newText!!.isNotEmpty()){
-
-                    }
                     return true
                 }
-
             })
         }
         return true
@@ -63,7 +58,7 @@ class SearchLandingActivity : ToolbarActivity(), SearchLandingContract.View {
             goToActivity<LandingActivity> {  }
         }
     }
-
+    //Metodo para asignarle a nuestro recycler el adapter ya cargado que proviene del presenter
     override fun displayItems(adapter: ItemListAdapter) {
         recycler.setHasFixedSize(true)
         recycler.itemAnimator = DefaultItemAnimator()
@@ -81,6 +76,7 @@ class SearchLandingActivity : ToolbarActivity(), SearchLandingContract.View {
 
     override fun getContext() = this
 
+    //En caso de que no se encuentren resultados se muestra un mensaje al usuario
     override fun showNoResultsMessage() {
         textViewNoResults.visibility = View.VISIBLE
     }

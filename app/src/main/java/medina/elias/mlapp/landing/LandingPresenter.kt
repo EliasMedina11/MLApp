@@ -1,16 +1,12 @@
 package medina.elias.mlapp.landing
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import android.provider.Settings.Global.getString
 import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
-import android.widget.ArrayAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import medina.elias.mlapp.R
 import medina.elias.mlapp.Service.RetroFitHelper
 import medina.elias.mlapp.adapters.RecentItemsAdapter
 import medina.elias.mlapp.details.ItemDetailsActivity
@@ -27,6 +23,7 @@ class LandingPresenter(private val view: LandingContract.View): LandingContract.
     private val subscribeScheduler = Schedulers.io()
     private val observerScheduler = AndroidSchedulers.mainThread()
 
+    // Obtenemos una lista de Results a partir de una query que nos provee nuestra View
     override fun fetchResult(search: String) {
         Log.e("Comienza busqueda de:",search)
         view.showLoading(true)
@@ -40,6 +37,9 @@ class LandingPresenter(private val view: LandingContract.View): LandingContract.
                         )
     }
 
+    /** Obtenemos esta nueva lista de Result y la vinculamos a nuestro adapter. Tambien se setea el comportamiento
+     * de onClick sobre los elementos, se obtiene el itemId y se navega a ItemDetailsActivity
+     */
     override fun attachToAdapter(product: List<Result>) {
         view.showLoading(false)
         if (product.isNotEmpty()){
@@ -55,7 +55,5 @@ class LandingPresenter(private val view: LandingContract.View): LandingContract.
             view.showNoResultsMessage()
         }
     }
-    override fun dispose() {}
-
 }
 

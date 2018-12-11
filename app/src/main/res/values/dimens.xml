@@ -2,4 +2,11 @@
 <resources>
     <dimen name="text_view_topMargin">28dp</dimen>
     <dimen name="min_padding">8dp</dimen>
+
+    <dimen name="small_text_size">10sp</dimen>
+    <dimen name="small_title_text_size">12sp</dimen>
+    <dimen name="max_padding">16dp</dimen>
+    <dimen name="vertical_image_size">120dp</dimen>
+    <dimen name="card_small_elevation_size">3dp</dimen>
+    <dimen name="min_margin">4dp</dimen>
 </resources>
