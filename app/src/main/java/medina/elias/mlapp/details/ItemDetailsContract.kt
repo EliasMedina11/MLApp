@@ -10,7 +10,7 @@ interface ItemDetailsContract : BaseContract {
 
     interface View: BaseContract.View {
       fun  updateRecyclerView(adapter: ItemDetailsAdapter)
-      fun updateDescriptionText(textDescription: String)
+      fun  updateDescriptionText(textDescription: String)
     }
 
     interface Presenter: BaseContract.Presenter{

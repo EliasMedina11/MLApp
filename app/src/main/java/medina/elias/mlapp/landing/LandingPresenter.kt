@@ -3,11 +3,14 @@ package medina.elias.mlapp.landing
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.provider.Settings.Global.getString
 import android.support.v4.content.ContextCompat.startActivity
 import android.util.Log
+import android.widget.ArrayAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import medina.elias.mlapp.R
 import medina.elias.mlapp.Service.RetroFitHelper
 import medina.elias.mlapp.adapters.RecentItemsAdapter
 import medina.elias.mlapp.details.ItemDetailsActivity
@@ -53,5 +56,6 @@ class LandingPresenter(private val view: LandingContract.View): LandingContract.
         }
     }
     override fun dispose() {}
+
 }
 

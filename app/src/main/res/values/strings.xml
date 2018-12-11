@@ -10,5 +10,20 @@
     <string name="user">User</string>
     <string name="email">Email</string>
     <string name="product">Producto</string>
+    <string name="accepta_mercado_pago">Accepta Mercado Pago</string>
+    <string name="go_to_details_activity">Go to details activity</string>
+    <string name="comprar">Comprar!</string>
+    <string name="detalles">Detalles</string>
+
+    <string-array name="Lines">
+        <item>Red Line</item>
+        <item>Blue Line</item>
+        <item>Orange Line</item>
+        <item>Green Line</item>
+        <item>Brown Line</item>
+        <item>Purple Line</item>
+        <item>Pink Line</item>
+        <item>Yellow Line</item>
+    </string-array>
 
 </resources>

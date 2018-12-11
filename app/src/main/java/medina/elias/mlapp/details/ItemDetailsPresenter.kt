@@ -18,6 +18,7 @@ class ItemDetailsPresenter(private val view : ItemDetailsContract.View) : ItemDe
     private val observerScheduler = AndroidSchedulers.mainThread()
 
     override fun searchDetails(itemId: String) {
+        view.showLoading(true)
         disposable =
                 retroFitHelper.getProductDetails(itemId)
                         .subscribeOn(subscribeScheduler)
@@ -28,22 +29,25 @@ class ItemDetailsPresenter(private val view : ItemDetailsContract.View) : ItemDe
     }
 
     override fun attachToAdapter(product: ArrayList<Product>) {
+        view.showLoading(false)
         adapter = (ItemDetailsAdapter(product))
         view.updateRecyclerView(adapter!!)
     }
 
     override fun searchDescription(itemId: String) {
+        view.showLoading(true)
         disposable =
                 retroFitHelper.getProductDescription(itemId)
                         .subscribeOn(subscribeScheduler)
                         .observeOn(observerScheduler)
                         .subscribe(
-                                {result -> getDescription(result.text)},
+                                {result -> getDescription(result.plain_text)},
                                 {error -> Log.e("Error item Description",error.message)}
                         )
     }
 
     override fun getDescription(itemDescription: String) {
+        view.showLoading(false)
         view.updateDescriptionText(itemDescription)
     }
 

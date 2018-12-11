@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
+import android.view.View
 import com.eliasmedina.mylibrary.ToolbarActivity
 import kotlinx.android.synthetic.main.activity_item_details.*
 import medina.elias.mlapp.adapters.ItemDetailsAdapter
@@ -44,8 +45,12 @@ class ItemDetailsActivity : ToolbarActivity(), ItemDetailsContract.View{
 }
 
     override fun showLoading(showLoading: Boolean) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-}
+        if (showLoading) {
+            progressBarMainDetails.visibility = View.VISIBLE
+        } else {
+            progressBarMainDetails.visibility = View.GONE
+        }
+    }
 
     private fun searchDetails(productId: String) {
         presenter.searchDetails(productId)

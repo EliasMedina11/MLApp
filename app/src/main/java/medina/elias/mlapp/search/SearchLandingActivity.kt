@@ -19,13 +19,15 @@ class SearchLandingActivity : ToolbarActivity(), SearchLandingContract.View {
     private val presenter by lazy { SearchLandingPresenter(this) }
     private val layoutManager by lazy { LinearLayoutManager(this) }
     private lateinit var recycler: RecyclerView
+    private lateinit var query : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         toolbarToLoad(toolbar as Toolbar)
 
-        val query =  intent.getStringExtra("query")
+        query = intent.getStringExtra("query")
+
         presenter.doSearch(query)
         setupToolbar()
 

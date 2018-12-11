@@ -1,7 +1,7 @@
 package medina.elias.mlapp.models
 
 data class Product(
-private var id: String,
+ var id: String,
  var site_id: String,
  var title: String,
  var subtitle: Any,
