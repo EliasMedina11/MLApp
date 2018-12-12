@@ -5,8 +5,8 @@ Librerias utilizadas:
 
 Retrofit y Gson - Para las conexiones REST y el parseo de información.
 
-RxJava - RxAndroid : Programacion Reactiva para las conexiones y el manejo de data con la API.
+RxJava - RxAndroid : Para las conexiones y el manejo de datos que provienen desde la API.
 
 Picasso y Slider : Para el manejo de recursos de imagenes.
 
-"mylibrary" : Custom Toolbar para poder utilizar en cada pantalla de la app.
+"mylibrary" : Custom Toolbar para poder utilizar en multiples pantallas. 
