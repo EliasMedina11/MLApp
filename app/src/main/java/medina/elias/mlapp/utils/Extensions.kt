@@ -11,8 +11,6 @@ import android.widget.Toast
 import com.squareup.picasso.Picasso
 import medina.elias.mlapp.R
 
-fun Int.isNatural () = this >= 0
-
 fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) = Toast.makeText(this, message , duration).show()
 
 fun Activity.toast(resourceId: Int, duration: Int = Toast.LENGTH_SHORT) = Toast.makeText(this, resourceId , duration).show()
@@ -32,9 +30,7 @@ fun Activity.snackBar(message: CharSequence, view: View? = findViewById(R.id.con
 
 fun ViewGroup.inflate (layoutId: Int) = LayoutInflater.from(context).inflate(layoutId, this ,false)!!
 
-fun ImageView.loadByUrl(url: String ) = Picasso.get().load(url).fit().into(this)
-
-fun ImageView.loadByResource (id : Int) = Picasso.get().load(id).fit().into(this)
+fun ImageView.loadByUrl(url: String ) = Picasso.get().load(url).into(this)
 
 inline fun <reified T: Activity> Activity.goToActivity(noinline init: Intent.() -> Unit = {}){
 

@@ -11,6 +11,7 @@ interface SearchLandingContract : BaseContract {
         fun displayItems(adapter: ItemListAdapter)
         fun getContext () : Context
         fun showNoResultsMessage ()
+        fun error()
     }
 
     interface Presenter : BaseContract.Presenter {

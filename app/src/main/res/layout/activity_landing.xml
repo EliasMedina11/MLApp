@@ -14,11 +14,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar">
         </include>
+
+        <ListView
+            android:id="@+id/suggestion_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:scrollbars="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/container" />
 
         <FrameLayout
             android:id="@+id/container"

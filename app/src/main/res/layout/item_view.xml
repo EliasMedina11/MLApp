@@ -5,10 +5,10 @@
     android:id="@+id/result_item_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp"
-    app:cardCornerRadius="2dp"
-    app:cardElevation="5dp"
-    app:contentPadding="5dp"
+    android:layout_margin="@dimen/small_card_view_size"
+    app:cardCornerRadius="@dimen/small_card_view_size"
+    app:cardElevation="@dimen/card_size"
+    app:contentPadding="@dimen/card_size"
     >
 
     <android.support.constraint.ConstraintLayout
@@ -20,19 +20,22 @@
             android:id="@+id/imageViewProduct"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/min_padding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/star_big_on" />
+            app:srcCompat="@android:drawable/star_big_on"
+            android:contentDescription="@string/product_image_search_descr" />
 
         <TextView
             android:id="@+id/textViewProductTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="2dp"
-            android:text="TextView"
+            android:layout_marginTop="8dp"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/list_search_text_size"
             app:layout_constraintStart_toEndOf="@+id/imageViewProduct"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,10 +43,12 @@
             android:id="@+id/textViewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="TextView"
+            android:layout_marginStart="@dimen/max_padding"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageViewProduct"
-            app:layout_constraintTop_toBottomOf="@+id/textViewProductTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewProductTitle"
+            app:layout_constraintVertical_bias="0.70" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

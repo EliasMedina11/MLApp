@@ -11,6 +11,7 @@ interface LandingContract : BaseContract{
         fun updateRecyclerView(adapter: RecentItemsAdapter)
         fun getContext () : Context
         fun showNoResultsMessage ()
+        fun onError ()
     }
 
     interface Presenter : BaseContract.Presenter {

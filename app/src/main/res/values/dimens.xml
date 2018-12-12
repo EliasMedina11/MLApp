@@ -1,2 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <!-- Text -->
+    <dimen name="small_text_size">10sp</dimen>
+    <dimen name="small_title_text_size">12sp</dimen>
+    <dimen name="list_search_text_size">14sp</dimen>
+    <dimen name="header_text_size">16sp</dimen>
+    <!-- Size -->
+    <dimen name="text_view_topMargin">28dp</dimen>
+    <dimen name="min_padding">8dp</dimen>
+    <dimen name="max_padding">16dp</dimen>
+    <dimen name="vertical_image_size">120dp</dimen>
+    <dimen name="card_small_elevation_size">3dp</dimen>
+    <dimen name="min_margin">4dp</dimen>
+    <dimen name="main_banner_height">200dp</dimen>
+    <dimen name="small_card_view_size">2dp</dimen>
+    <dimen name="card_size">5dp</dimen>
+    <dimen name="nav_header_size">180dp</dimen>
+    <dimen name="drawer_header_size">100dp</dimen>
+    <dimen name="slider_height">200dp</dimen>
+    <dimen name="divider_size">1dp</dimen>
+    <dimen name="price_details_text_size">16sp</dimen>
+    <dimen name="title_details_text_size">20sp</dimen>
+    <dimen name="margin_text_view_sold_details">24dp</dimen>
+    <dimen name="details_button_size">24dp</dimen>
+</resources>
