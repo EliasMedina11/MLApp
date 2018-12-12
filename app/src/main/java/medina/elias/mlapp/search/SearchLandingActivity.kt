@@ -82,7 +82,8 @@ class SearchLandingActivity : ToolbarActivity(), SearchLandingContract.View {
     }
 
     override fun error() {
-        textViewNoResults.text = R.string.error_with_search.toString()
+        textViewNoResults.text = getString(R.string.error_with_search).toString()
+        textViewNoResults.visibility = View.VISIBLE
     }
 
 
