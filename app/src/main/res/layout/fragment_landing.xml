@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".landing.LandingFragment"
     >
+    <TextView
+        android:id="@+id/textViewError"
+        android:layout_width="match_parent"
+        android:text="@string/error_with_search"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <android.widget.RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,12 +27,12 @@
         >
 
         <ImageView
-        android:id="@+id/imageViewBanner"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/meli"
-        />
+            android:id="@+id/imageViewBanner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/main_banner_height"
+            android:layout_marginEnd="@dimen/min_padding"
+            android:src="@drawable/meli"
+            android:contentDescription="@string/landing_main_banner_descr" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_item_main"
@@ -30,6 +41,7 @@
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/imageViewBanner"/>
-
     </android.widget.RelativeLayout>
 </ScrollView>
+
+</LinearLayout>

@@ -11,7 +11,6 @@ import medina.elias.mlapp.adapters.ItemDetailsAdapter
 /** Activity que recibe el id de un producto y luego obtiene su description**/
 
 class DetailsActivity : ToolbarActivity(), ItemDetailsContract.View {
-
     private val presenter: ItemDetailsPresenter by lazy { ItemDetailsPresenter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +46,10 @@ class DetailsActivity : ToolbarActivity(), ItemDetailsContract.View {
         } else {
             progressBarDetails.visibility = View.GONE
         }
+    }
+
+    override fun error() {
+        textViewError.visibility = View.VISIBLE
     }
 
 }

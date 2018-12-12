@@ -6,10 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".details.ItemDetailsActivity">
+
     <ir.apend.slider.ui.Slider
         android:id="@+id/imageViewProduct"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/slider_height"
+        android:layout_marginTop="@dimen/min_padding"
         app:animateIndicators="true"
         app:defaultIndicators="circle"
         app:indicatorSize="@dimen/min_padding"
@@ -26,7 +28,7 @@
         android:layout_marginEnd="@dimen/min_padding"
         android:layout_marginStart="@dimen/min_padding"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="@dimen/title_details_text_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -40,8 +42,8 @@
         android:layout_marginStart="@dimen/min_padding"
         android:layout_marginTop="@dimen/min_padding"
         android:fontFamily="monospace"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/price_details_text_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
@@ -55,7 +57,6 @@
         android:layout_marginEnd="@dimen/min_padding"
         app:layout_constraintBottom_toBottomOf="@+id/textViewPrice"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toEndOf="@+id/textViewPrice"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
@@ -64,15 +65,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/min_padding"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/margin_text_view_sold_details"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="@dimen/divider_size"
+        android:layout_marginTop="@dimen/min_padding"
         android:background="@color/default_ripple_color"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/min_padding"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/max_padding"
         android:text="@string/detalles"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -93,16 +94,17 @@
         android:id="@+id/buttonBuy"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/design_default_color_primary_dark"
+        android:layout_marginStart="@dimen/min_padding"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/min_padding"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorComplement"
         android:text="@string/comprar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDetails" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonDetails"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textViewAcceptsMercadoPago"
@@ -111,17 +113,15 @@
         android:text="@string/accepta_mercado_pago"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toEndOf="@+id/textViewSold"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUnidades"
-        app:layout_constraintVertical_bias="0.653" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUnidades" />
 
     <ImageButton
         android:id="@+id/buttonDetails"
-        android:layout_width="23dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="@dimen/details_button_size"
+        android:layout_height="@dimen/details_button_size"
+        android:layout_marginStart="@dimen/min_padding"
+        android:layout_marginEnd="@dimen/min_padding"
         app:layout_constraintBottom_toBottomOf="@+id/textViewDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

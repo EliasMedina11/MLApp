@@ -17,6 +17,8 @@ class ItemDetailsPresenter(private val view: ItemDetailsContract.View) : ItemDet
     private val subscribeScheduler = Schedulers.io()
     private val observerScheduler = AndroidSchedulers.mainThread()
 
+    //Metodo que busca los detalles de un producto
+
     override fun searchDetails(itemId: String) {
         view.showLoading(true)
         disposable =
@@ -24,16 +26,21 @@ class ItemDetailsPresenter(private val view: ItemDetailsContract.View) : ItemDet
                         .subscribeOn(subscribeScheduler)
                         .observeOn(observerScheduler)
                         .subscribe({ result -> attachToAdapter(arrayListOf(result)) },
-                                { error -> Log.e("Error with product", error.message) }
+                                { error ->
+                                    Log.e("Error with product", error.message)
+                                    view.error()
+                                    view.showLoading(false)}
                         )
     }
 
+    // Obtenemos una lista con los detalles del producto y la vinculamos a nuestro adapter
     override fun attachToAdapter(product: ArrayList<Product>) {
         view.showLoading(false)
         adapter = (ItemDetailsAdapter(product))
         view.updateRecyclerView(adapter!!)
     }
 
+    // Metodo que busca la descripcion del producto
     override fun searchDescription(itemId: String) {
         view.showLoading(true)
         disposable =
@@ -42,10 +49,14 @@ class ItemDetailsPresenter(private val view: ItemDetailsContract.View) : ItemDet
                         .observeOn(observerScheduler)
                         .subscribe(
                                 { result -> getDescription(result.plain_text) },
-                                { error -> Log.e("Error item Description", error.message) }
+                                { error -> Log.e("Error item Description", error.message)
+                                    view.error()
+                                    view.showLoading(false)
+                                }
                         )
     }
 
+    // Obtenemos la descripcion y la enviamos a la vista
     override fun getDescription(itemDescription: String) {
         view.showLoading(false)
         view.updateDescriptionText(itemDescription)

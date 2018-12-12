@@ -17,6 +17,7 @@ import android.widget.TextView
 import com.eliasmedina.mylibrary.ToolbarActivity
 import kotlinx.android.synthetic.main.activity_landing.*
 import kotlinx.android.synthetic.main.sugestion_edit_text.*
+import kotlinx.android.synthetic.main.sugestion_edit_text.view.*
 import medina.elias.mlapp.R
 import medina.elias.mlapp.search.SearchLandingActivity
 import medina.elias.mlapp.utils.AppConstants
@@ -77,8 +78,8 @@ class LandingActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelect
                 }
             })
             //Al seleccionar un item de la lista de sugerencias navegar a SearchLandingActivity con el valor seleccionado
-            suggestion_list.setOnItemClickListener { _, _, _, _ ->
-                val selectedString = suggestion_text.text.toString()
+            suggestion_list.setOnItemClickListener { _, view: View, _, _ ->
+                val selectedString = view.suggestion_text.text.toString()
                 val intent = Intent(applicationContext,SearchLandingActivity::class.java)
                 intent.putExtra("query", selectedString)
                 startActivity(intent)

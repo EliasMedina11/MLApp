@@ -17,7 +17,6 @@ import medina.elias.mlapp.utils.goToActivity
 /** Activity que obtiene el id de una busqueda para hacer luego obtener los detalles del producto**/
 
 class ItemDetailsActivity : ToolbarActivity(), ItemDetailsContract.View{
-
     private val presenter: ItemDetailsPresenter by lazy { ItemDetailsPresenter(this) }
 
     private lateinit var recycler: RecyclerView
@@ -67,6 +66,10 @@ class ItemDetailsActivity : ToolbarActivity(), ItemDetailsContract.View{
     // metodo obligatorio ya que se esta utilizando el mismo presenter para dos vistas
     override fun updateDescriptionText(textDescription: String) {
 
+    }
+
+    override fun error() {
+        textViewError.visibility = View.VISIBLE
     }
 
 }

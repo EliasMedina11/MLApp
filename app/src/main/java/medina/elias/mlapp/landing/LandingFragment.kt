@@ -17,6 +17,7 @@ import medina.elias.mlapp.R
 import medina.elias.mlapp.adapters.RecentItemsAdapter
 
 class LandingFragment : Fragment(), LandingContract.View {
+
     private lateinit var recycler: RecyclerView
     private val presenter by lazy { LandingPresenter(this) }
     private val layoutManager by lazy { GridLayoutManager(context,2) }
@@ -52,5 +53,9 @@ class LandingFragment : Fragment(), LandingContract.View {
     }
 
     override fun showLoading(showLoading: Boolean) {}
+
+    override fun onError() {
+        view!!.textViewError.visibility = View.VISIBLE
+    }
 
 }

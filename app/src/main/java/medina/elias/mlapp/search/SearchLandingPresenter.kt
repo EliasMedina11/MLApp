@@ -34,16 +34,18 @@ class SearchLandingPresenter(private var view: SearchLandingContract.View) : Sea
                 retroFitHelper.getSearchResult(query)
                         .subscribeOn(subscribeScheduler)
                         .observeOn(observerScheduler)
-                        .subscribe({ result -> updateItemRecyclerView(result.results) },
-                                { error -> Log.e("Error with product", error.message) }
+                        .subscribe({ result -> updateItemRecyclerView(result.results)},
+                                     { error -> Log.e("Error with product", error.message)
+                                         view.showLoading(false)
+                                         view.error()}
                         )
     }
     /** Obtenemos esta nueva lista de Result y la vinculamos a nuestro adapter, a su vez se setea el comportamiento
      * de onClick sobre los elementos, se obtiene el itemId y se navega a ItemDetailsActivity
      */
     override fun updateItemRecyclerView(results: List<Result>) {
-        view.showLoading(false)
         if (results.isNotEmpty()) {
+            view.showLoading(false)
             adapter = ItemListAdapter(results.toMutableList(), object : SearchListener {
                 override fun onClick(itemId: String, position: Int) {
                     val intent = Intent(context, ItemDetailsActivity::class.java)

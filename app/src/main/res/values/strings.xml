@@ -10,5 +10,9 @@
     <string name="go_to_details_activity">Go to details activity</string>
     <string name="comprar">Comprar!</string>
     <string name="detalles">Detalles</string>
+    <string name="no_results_found">No se encontraron resultados intentalo nuevamente</string>
+    <string name="landing_main_banner_descr">Landing main banner</string>
+    <string name="header_nav_drawer_descr">Header for nav drawer</string>
+    <string name="error_with_search">Un error ha ocurrido, porfavor revisa tu conexion a internet o intentalo nuevamente.</string>
 
 </resources>

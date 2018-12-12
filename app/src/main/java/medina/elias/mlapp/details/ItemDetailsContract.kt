@@ -11,6 +11,7 @@ interface ItemDetailsContract : BaseContract {
     interface View: BaseContract.View {
       fun  updateRecyclerView(adapter: ItemDetailsAdapter)
       fun  updateDescriptionText(textDescription: String)
+      fun error()
     }
 
     interface Presenter: BaseContract.Presenter{

@@ -33,7 +33,8 @@ class LandingPresenter(private val view: LandingContract.View): LandingContract.
                         .subscribeOn(subscribeScheduler)
                         .observeOn(observerScheduler)
                         .subscribe( { result -> attachToAdapter(result.results)},
-                                    { error ->  Log.e("Error with product",error.message)}
+                                    { error ->  Log.e("Error with product",error.message)
+                                    view.onError()}
                         )
     }
 
