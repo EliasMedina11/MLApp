@@ -8,7 +8,7 @@ import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import medina.elias.mlapp.Service.RetroFitHelper
+import medina.elias.mlapp.service.RetroFitHelper
 import medina.elias.mlapp.adapters.ItemListAdapter
 import medina.elias.mlapp.details.ItemDetailsActivity
 import medina.elias.mlapp.models.Result
@@ -18,9 +18,10 @@ import medina.elias.mlapp.utils.SearchListener
 class SearchLandingPresenter(private var view: SearchLandingContract.View) : SearchLandingContract.Presenter {
 
     private val retroFitHelper by lazy { RetroFitHelper.create() }
-    var disposable: Disposable? = null
+    private var disposable: Disposable? = null
     var adapter: ItemListAdapter? = null
     var context: Context = view.getContext()
+    var emptyResults: Boolean = false
 
     private val subscribeScheduler = Schedulers.io()
     private val observerScheduler = AndroidSchedulers.mainThread()
@@ -55,6 +56,7 @@ class SearchLandingPresenter(private var view: SearchLandingContract.View) : Sea
             })
             view.displayItems(adapter!!)
         } else {
+            emptyResults = true
             view.showNoResultsMessage()
         }
 

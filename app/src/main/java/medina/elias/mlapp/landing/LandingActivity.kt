@@ -11,17 +11,14 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.eliasmedina.mylibrary.ToolbarActivity
 import kotlinx.android.synthetic.main.activity_landing.*
-import kotlinx.android.synthetic.main.sugestion_edit_text.*
 import kotlinx.android.synthetic.main.sugestion_edit_text.view.*
 import medina.elias.mlapp.R
 import medina.elias.mlapp.search.SearchLandingActivity
 import medina.elias.mlapp.utils.AppConstants
-import medina.elias.mlapp.utils.goToActivity
 import medina.elias.mlapp.utils.toast
 
 class LandingActivity : ToolbarActivity(), NavigationView.OnNavigationItemSelectedListener {

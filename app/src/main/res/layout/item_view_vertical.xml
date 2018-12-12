@@ -30,7 +30,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/star_on" />
+                app:srcCompat="@android:drawable/star_on"
+                android:contentDescription="@string/vertical_image_of_product" />
 
             <TextView
                 android:id="@+id/textViewMainTitle"

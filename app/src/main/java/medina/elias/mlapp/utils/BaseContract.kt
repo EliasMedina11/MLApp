@@ -1,4 +1,4 @@
-package medina.elias.mlapp.utils;
+package medina.elias.mlapp.utils
 
 
 interface BaseContract {

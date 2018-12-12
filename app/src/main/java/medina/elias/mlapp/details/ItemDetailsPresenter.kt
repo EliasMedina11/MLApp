@@ -4,7 +4,7 @@ import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import medina.elias.mlapp.Service.RetroFitHelper
+import medina.elias.mlapp.service.RetroFitHelper
 import medina.elias.mlapp.adapters.ItemDetailsAdapter
 import medina.elias.mlapp.models.Product
 

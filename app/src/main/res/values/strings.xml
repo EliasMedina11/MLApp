@@ -14,5 +14,11 @@
     <string name="landing_main_banner_descr">Landing main banner</string>
     <string name="header_nav_drawer_descr">Header for nav drawer</string>
     <string name="error_with_search">Un error ha ocurrido, porfavor revisa tu conexion a internet o intentalo nuevamente.</string>
+    <string name="vertical_image_of_product">vertical image of product</string>
+    <string name="product_image_search_descr">image of product in recycler view search</string>
+    <string name="nav_drawer_settings">Settings</string>
+    <string name="nav_drawer_profile">Profile</string>
+    <string name="nav_drawer_other">Other</string>
+    <string name="nav_drawer_home">Home</string>
 
 </resources>

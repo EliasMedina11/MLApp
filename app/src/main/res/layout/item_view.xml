@@ -24,7 +24,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/star_big_on" />
+            app:srcCompat="@android:drawable/star_big_on"
+            android:contentDescription="@string/product_image_search_descr" />
 
         <TextView
             android:id="@+id/textViewProductTitle"

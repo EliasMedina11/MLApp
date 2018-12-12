@@ -11,8 +11,7 @@ import android.view.View
 import com.eliasmedina.mylibrary.ToolbarActivity
 import kotlinx.android.synthetic.main.activity_item_details.*
 import medina.elias.mlapp.adapters.ItemDetailsAdapter
-import medina.elias.mlapp.landing.LandingActivity
-import medina.elias.mlapp.utils.goToActivity
+
 
 /** Activity que obtiene el id de una busqueda para hacer luego obtener los detalles del producto**/
 

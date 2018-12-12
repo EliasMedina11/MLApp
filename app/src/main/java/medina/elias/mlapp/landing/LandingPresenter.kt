@@ -7,7 +7,7 @@ import android.util.Log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import medina.elias.mlapp.Service.RetroFitHelper
+import medina.elias.mlapp.service.RetroFitHelper
 import medina.elias.mlapp.adapters.RecentItemsAdapter
 import medina.elias.mlapp.details.ItemDetailsActivity
 import medina.elias.mlapp.models.Result
@@ -15,8 +15,8 @@ import medina.elias.mlapp.utils.SearchListener
 
 class LandingPresenter(private val view: LandingContract.View): LandingContract.Presenter {
 
-    val retroFitHelper by lazy { RetroFitHelper.create() }
-    var disposable : Disposable? = null
+    private val retroFitHelper by lazy { RetroFitHelper.create() }
+    private var disposable : Disposable? = null
     var adapter: RecentItemsAdapter? = null
     var context: Context = view.getContext()
 

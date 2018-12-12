@@ -1,4 +1,4 @@
-package medina.elias.mlapp.Service
+package medina.elias.mlapp.service
 
 import io.reactivex.Observable
 import medina.elias.mlapp.models.Product

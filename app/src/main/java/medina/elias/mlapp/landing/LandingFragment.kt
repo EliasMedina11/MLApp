@@ -9,9 +9,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.fragment_landing.*
 import kotlinx.android.synthetic.main.fragment_landing.view.*
 import medina.elias.mlapp.R
 import medina.elias.mlapp.adapters.RecentItemsAdapter
